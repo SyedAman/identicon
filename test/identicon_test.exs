@@ -27,4 +27,8 @@ defmodule IdenticonTest do
   test "should generate an identicon that has white boxes which correspond to
   odd hash values" do
   end
+
+  test "should generate an identicon where all colored boxes have the same
+  color" do
+  end
 end
