@@ -1,18 +1,11 @@
 defmodule Identicon do
-  @moduledoc """
-  Documentation for Identicon.
-  """
+  def string_to_hash(string_to_encode) do
+    :crypto.hash(:md5, string_to_encode)
+    |> :binary.bin_to_list
+  end
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Identicon.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def string_to_identicon(string_to_convert) do
+    string_to_convert
+    |> string_to_hash
   end
 end
