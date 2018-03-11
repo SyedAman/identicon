@@ -21,7 +21,7 @@ defmodule Identicon do
 
   def build_grid(%Identicon.Image{hex: hex_list} = image) do
     grid_rows = hex_list
-    |> Enum.chunk_every(3, 3, :discard)
+    |> Enum.chunk(3)
     |> mirror_rows
 
     %Identicon.Image{image | grid: grid_rows}
