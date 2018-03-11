@@ -17,12 +17,14 @@ defmodule IdenticonTest do
   4 and 5" do
   end
 
-  test "should generate an identicon that is 5 boxes long and 5 boxeswide" do
+  test "should generate an identicon that is 5 boxes long and 5 boxes wide" do
   end
 
-  test "should have colored boxes that correspond to even hash values" do
+  test "should generate an identicon that has colored boxes which correspond to
+  even hash values" do
   end
 
-  test "should have white boxes that correspond to odd hash values" do
+  test "should generate an identicon that has white boxes which correspond to
+  odd hash values" do
   end
 end
