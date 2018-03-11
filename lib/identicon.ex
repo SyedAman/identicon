@@ -14,8 +14,8 @@ defmodule Identicon do
 
   def mirror_rows(rows) do
     for row <- rows do
-      [column1, column2, column3] = row
-      [column1, column2, column3, column2,  column1]
+      [column1, column2 | _tail] = row
+      row ++ [column2,  column1]
     end
   end
 
