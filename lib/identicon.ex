@@ -20,6 +20,8 @@ defmodule Identicon do
     grid_rows = hex_list
     |> Enum.chunk(3)
     |> Enum.map(&mirror_row/1)
+    |> List.flatten
+    |> Enum.with_index 
 
     %Identicon.Image{image | grid: grid_rows}
   end
