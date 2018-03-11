@@ -8,9 +8,8 @@ defmodule Identicon do
     %Identicon.Image{hex: hex_list}
   end
 
-  def generate_box_color(image) do
-    %Identicon.Image{hex: [r, g, b | _tail]} = image
-    [r, g, b]
+  def generate_box_color(%Identicon.Image{hex: [r, g, b | _tail]} = image) do
+    %Identicon.Image{image | colors: {r, g, b}}
   end
 
   def string_to_identicon(string_to_convert) do
