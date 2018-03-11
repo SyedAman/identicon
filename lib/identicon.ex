@@ -1,10 +1,10 @@
 defmodule Identicon do
-  def string_to_hex_list(string_to_encode) do
+  def create_hex_list(string_to_encode) do
     :crypto.hash(:md5, string_to_encode)
     |> :binary.bin_to_list
   end
 
-  def form_image_from_hex_list(hex_list) do
+  def build_image(hex_list) do
     %Identicon.Image{hex: hex_list}
   end
 
@@ -12,10 +12,26 @@ defmodule Identicon do
     %Identicon.Image{image | colors: {r, g, b}}
   end
 
+  def mirror_rows(rows) do
+    for row <- rows do
+      [column1, column2, column3] = row
+      [column1, column2, column3, column2,  column1]
+    end
+  end
+
+  def build_grid(%Identicon.Image{hex: hex_list} = image) do
+    grid_rows = hex_list
+    |> Enum.chunk_every(3, 3, :discard)
+    |> mirror_rows
+
+    %Identicon.Image{image | grid: grid_rows}
+  end
+
   def string_to_identicon(string_to_convert) do
     string_to_convert
-    |> string_to_hex_list
-    |> form_image_from_hex_list
+    |> create_hex_list
+    |> build_image
     |> generate_box_color
+    |> build_grid
   end
 end
